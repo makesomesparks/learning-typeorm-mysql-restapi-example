@@ -3,26 +3,32 @@ import { Note } from "./Note";
 import { NoteDocument } from "./NoteDocument";
 
 @Entity({ name: "tb_note_document_storage" })
-export class NoteDocumentStorage
-{
+export class NoteDocumentStorage {
+
+  // # PK
   @PrimaryColumn("varchar", { name: "note_document_storage_uid", length: 15 })
   uid: string;
 
   @BeforeInsert()
-  setUid()
-  {
+  setUid() {
     this.uid = "generate_uid('tb_note_document_storage')";
   }
 
+
+  // # FK
   @Column('varchar', { name: "note_document_uid", length: 15 })
   documentUid: string;
 
   @Column('longtext', { name: "note_document_storage_data", default: '' })
   data: string;
 
-  @CreateDateColumn({ name: "note_document_storage_timestam_create", default: () => "CURRENT_TIMESTAMP(6)" })
-  timestamp: Date;
 
-  @ManyToOne(() => NoteDocument, noteDocument => noteDocument.documentStorage)
-  noteDocument: NoteDocument;
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "note_document_storage_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  time: Date;
+
+
+  // # Relation n:1
+  @ManyToOne(() => NoteDocument, document => document.storage)
+  document: NoteDocument;
 }

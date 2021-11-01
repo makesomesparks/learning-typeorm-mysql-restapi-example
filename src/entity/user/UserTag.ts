@@ -4,6 +4,7 @@ import { User } from "./User";
 @Entity({ name: "tb_user_tag" })
 export class UserTag {
 
+  // # PK
   @PrimaryColumn({ name: "user_tag_uid", length: 15 })
   uid: string;
 
@@ -13,18 +14,26 @@ export class UserTag {
     this.uid = result[0]["generated_uid"];
   }
 
+
+  // # FK
   @Column('varchar', { name: "user_uid", length: 15, nullable: false })
   userUid: string;
 
+
+  // # Column
   @Column('varchar', { name: "user_tag_name", length: 50 })
   name: string;
 
-  @Column('bit', { name: "user_tag_is_delete" })
+  @Column('bit', { name: "user_tag_is_delete", default: () => 0 })
   isDelete: boolean;
 
-  @CreateDateColumn({ name: "user_tag_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-  timestamp: string;
 
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "user_tag_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  time: string;
+
+
+  // # Relation n:1
   @ManyToOne(() => User, user => user.tag)
   user: User;
 }

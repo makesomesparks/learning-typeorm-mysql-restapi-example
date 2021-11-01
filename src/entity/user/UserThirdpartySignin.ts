@@ -4,6 +4,7 @@ import { User } from "./User";
 @Entity({ name: "tb_user_thirdparty_signin" })
 export class UserThirdpartySignin {
 
+  // # PK
   @PrimaryColumn('varchar', { name: "user_thirdparty_signin_uid", length: 15 })
   uid: string;
 
@@ -13,9 +14,12 @@ export class UserThirdpartySignin {
     this.uid = result[0]["generated_uid"];
   }
 
-  @Column('varchar', { name: "user_uid", length: 15 })
+  // # FK
+  @Column('varchar', { name: "user_uid", length: 15, nullable: false })
   userUid: string;
 
+
+  // # Column
   @Column('varchar', { name: "user_thirdparty_signin_type", length: 20 })
   type: string;
 
@@ -25,12 +29,19 @@ export class UserThirdpartySignin {
   @Column('varchar', { name: "user_thirdparty_signin_key", length: 255 })
   key: string;
 
-  @Column('bit', { name: "user_thirdparty_signin_is_delete" })
+  @Column('bit', { name: "user_thirdparty_signin_is_delete", default: () => 0 })
   isDelete: boolean;
 
-  @CreateDateColumn({ name: "user_thirdparty_signin_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-  timestamp: Date;
 
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "user_thirdparty_signin_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  time: Date;
+
+  @CreateDateColumn({ type: 'timestamp', name: "user_thirdparty_signin_time_delete", default: () => 'CURRENT_TIMESTAMP(6)' })
+  timeDelete: Date;
+
+
+  // # Relation n:1
   @ManyToOne(() => User, user => user.thirdpartySignin)
   user: User;
 }

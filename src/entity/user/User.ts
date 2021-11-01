@@ -1,5 +1,6 @@
 import { BeforeInsert, CreateDateColumn, Entity, getManager, OneToMany, PrimaryColumn } from "typeorm";
 import { Note } from "../note/Note";
+import { VerifyEmail } from "../verify/VerifyEmail";
 import { UserEmail } from "./UserEmail";
 import { UserPassword } from "./UserPassword";
 import { UserProfile } from "./UserProfile";
@@ -8,6 +9,8 @@ import { UserThirdpartySignin } from "./UserThirdpartySignin";
 
 @Entity({ name: "tb_user" })
 export class User {
+
+    // # PK
     @PrimaryColumn('varchar', { name: "user_uid", length: 15 })
     uid: string;
 
@@ -17,10 +20,13 @@ export class User {
         this.uid = result[0]["generated_uid"];
     }
 
-    @CreateDateColumn({ name: "user_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-    timestamp: Date;
 
-    // User
+    // # Timestamp
+    @CreateDateColumn({ type: 'timestamp',  name: "user_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+    time: Date;
+
+
+    // # Relation 1:n
     @OneToMany(() => UserProfile, profile => profile.user)
     profile: UserProfile[];
 
@@ -33,11 +39,12 @@ export class User {
     @OneToMany(() => UserThirdpartySignin, thirdpartySignin => thirdpartySignin.user)
     thirdpartySignin: UserThirdpartySignin[];
 
+    @OneToMany(() => VerifyEmail, verifyEmail => verifyEmail.user)
+    verifyEmail: VerifyEmail[];
+
     @OneToMany(() => UserTag, tag => tag.user)
     tag: UserTag[];
 
-    // Note
     @OneToMany(() => Note, note => note.user)
     note: Note[];
-    1
 }

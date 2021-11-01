@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { User } from "../user/User";
 import { Note } from "./Note";
 import { NoteCategory } from "./NoteCategory";
@@ -7,17 +7,24 @@ import { NoteStatus } from "./NoteStatus";
 
 @Entity({ name: "tb_note_document" })
 export class NoteDocument {
+
+  // # PK
   @PrimaryColumn("varchar", { name: "note_document_uid", length: 15 })
   uid: string;
 
   @BeforeInsert()
-  setUid() {
-    this.uid = "generate_uid('tb_note_document')";
+  private async beforeInsert() {
+    const result = await getManager().query("SELECT generate_uid('tb_note_document') generated_uid");
+    this.uid = result[0]["generated_uid"];
   }
 
+
+  // # FK
   @Column("varchar", { name: "note_uid", length: 15, nullable: false })
   noteUid: string;
 
+
+  // # Column
   @Column("varchar", { name: "note_document_title", length: 100 })
   title: string;
 
@@ -27,11 +34,18 @@ export class NoteDocument {
   @Column("text", { name: "note_document_body", default: "" })
   body: string;
 
-  @CreateDateColumn({ name: "note_document_timestamp_create", default: () => "CURRENT_TIMESTAMP(6)" })
-  timestamp: Date;
 
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "note_document_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  time: Date;
+
+
+  // Relation n:1
   @ManyToOne(() => Note, note => note.document)
   note: Note;
 
-  documentStorage: NoteDocumentStorage;
+
+  // Relation 1:n
+  @OneToMany(() => NoteDocumentStorage, storage => storage.document)
+  storage: NoteDocumentStorage;
 }

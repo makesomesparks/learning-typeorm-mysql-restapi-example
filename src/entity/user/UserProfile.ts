@@ -4,6 +4,7 @@ import { User } from "./User";
 @Entity({ name: "tb_user_profile" })
 export class UserProfile {
 
+    // PK
     @PrimaryColumn({ name: "user_profile_uid", length: 15 })
     uid: string;
 
@@ -13,18 +14,26 @@ export class UserProfile {
         this.uid = result[0]["generated_uid"];
     }
 
-    @Column('varchar', { name: "user_uid", length: 15 })
+
+    // FK
+    @Column('varchar', { name: "user_uid", length: 15, nullable: false })
     userUid: string;
 
+
+    // # Column
     @Column('varchar', { name: "user_profile_id", length: 30 })
     id: string;
 
     @Column('varchar', { name: "user_profile_name", length: 50 })
     name: string;
 
-    @CreateDateColumn({ name: "user_profile_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-    timestamp: string;
 
+    // # Timestamp
+    @CreateDateColumn({ type: 'timestamp', name: "user_profile_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+    time: string;
+
+
+    // Relation n:1
     @ManyToOne(() => User, user => user.profile)
     user: User;
 }

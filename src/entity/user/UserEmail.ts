@@ -1,9 +1,11 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { VerifyEmail } from "../verify/VerifyEmail";
 import { User } from "./User";
 
 @Entity({ name: "tb_user_email" })
 export class UserEmail {
 
+  // # PK
   @PrimaryColumn('varchar', { name: "user_email_uid", length: 15 })
   uid: string;
 
@@ -13,21 +15,26 @@ export class UserEmail {
     this.uid = result[0]["generated_uid"];
   }
 
-  @Column('varchar', { name: "user_uid", length: 15 })
+
+  // # FK
+  @Column('varchar', { name: "user_uid", length: 15, nullable: false })
   userUid: string;
 
-  @Column('varchar', { name: "user_email_address", length: 255 })
-  address: string;
+  @Column('varchar', { name: "verify_email_uid", length: 15, nullable: false })
+  verifyEmailUid: string;
 
-  @Column('bit', { name: "user_email_is_verify" })
-  isVerify: boolean;
 
-  @UpdateDateColumn({ name: "user_email_timestamp_verify", default: () => 'CURRENT_TIMESTAMP(6)' })
-  timestampVerify: Date;
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "user_email_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  time: Date;
 
-  @CreateDateColumn({ name: "user_email_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-  timestamp: Date;
 
+  // # Relation n:1
   @ManyToOne(() => User, user => user.email)
   user: User;
+
+
+  // # Relation 1:1
+  @OneToOne(() => VerifyEmail, verifyEmail => verifyEmail.user)
+  verifyEmail: VerifyEmail;
 }

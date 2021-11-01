@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { User } from "../user/User";
 import { NoteCategory } from "./NoteCategory";
 import { NoteDocument } from "./NoteDocument";
@@ -6,34 +6,45 @@ import { NoteStatus } from "./NoteStatus";
 
 @Entity({ name: "tb_note" })
 export class Note {
+
+  // # PK
   @PrimaryColumn("varchar", { name: "note_uid", length: 15 })
   uid: string;
-  storage: any;
 
   @BeforeInsert()
-  setUid() {
-    this.uid = "generate_uid('tb_note')";
+  private async beforeInsert() {
+    const result = await getManager().query("SELECT generate_uid('tb_note') generated_uid");
+    this.uid = result[0]["generated_uid"];
   }
 
-  @Column("varchar", { name: "user_uid", length: 15 })
-  userUid: string;
 
+  // # FK
+  @Column("varchar", { name: "user_uid", length: 15, nullable: false })
+  userUid: string;
 
   @Column("varchar", { name: "note_category_uid", length: 15, default: 'undefined' })
   noteCategoryUid: string;
 
 
-  @CreateDateColumn({ name: "note_timestamp_create", default: () => "CURRENT_TIMESTAMP(6)" })
-  timestamp: Date;
+  // Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "note_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  time: Date;
 
+
+  // # Relation n:1
   @ManyToOne(() => User, user => user.note)
   user: User;
 
-  @ManyToOne(() => NoteCategory, noteCategory => noteCategory.note)
-  noteCategory: NoteCategory[];
 
+  // # Relation 1:n
   @OneToMany(() => NoteDocument, document => document.note)
   document: NoteDocument;
 
-  status: NoteStatus;
+  @OneToMany(() => NoteStatus, status => status.note)
+  status: NoteStatus[];
+
+
+  // # Relation 1:1
+  @ManyToOne(() => NoteCategory, noteCategory => noteCategory.note)
+  noteCategory: NoteCategory;
 }

@@ -4,6 +4,7 @@ import { User } from "./User";
 @Entity({ name: "tb_user_password" })
 export class UserPassword {
 
+  // PK
   @PrimaryColumn('varchar', { name: "user_password_uid", length: 15 })
   uid: string;
 
@@ -13,15 +14,23 @@ export class UserPassword {
     this.uid = result[0]["generated_uid"];
   }
 
-  @Column('varchar', { name: "user_uid", length: 15 })
+
+  // FK
+  @Column('varchar', { name: "user_uid", length: 15, nullable: false })
   userUid: string;
 
+
+  // # Column
   @Column('varchar', { name: "user_password_hash", length: 255 })
   hash: string;
 
-  @CreateDateColumn({ name: "user_password_timestamp_create", default: () => 'CURRENT_TIMESTAMP(6)' })
-  timestamp: Date;
 
+  // # Timestamp
+  @CreateDateColumn({ type: 'timestamp', name: "user_password_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  time: Date;
+
+
+  // # Relation n:1
   @ManyToOne(() => User, user => user.password)
   user: User;
 }
