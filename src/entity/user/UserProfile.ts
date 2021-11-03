@@ -2,14 +2,16 @@ import { Column, Entity, ManyToOne, PrimaryColumn, CreateDateColumn, BeforeInser
 import { User } from "./User";
 
 @Entity({ name: "tb_user_profile" })
-export class UserProfile {
+export class UserProfile
+{
 
     // PK
     @PrimaryColumn({ name: "user_profile_uid", length: 15 })
     uid: string;
 
     @BeforeInsert()
-    private async beforeInsert() {
+    private async beforeInsert()
+    {
         const result = await getManager().query("SELECT generate_uid('tb_user_profile') generated_uid");
         this.uid = result[0]["generated_uid"];
     }
@@ -26,6 +28,21 @@ export class UserProfile {
 
     @Column('varchar', { name: "user_profile_name", length: 50 })
     name: string;
+
+    @Column('bit', { name: "user_profile_is_private" })
+    isPrivate: boolean;
+
+    @Column('bit', { name: "user_profile_is_public_name" })
+    isPublicName: boolean;
+
+    @Column('bit', { name: "user_profile_is_public_email" })
+    isPublicEmail: boolean;
+
+    @Column('bit', { name: "user_profile_is_public_note" })
+    isPublicNote: boolean;
+
+    @Column('bit', { name: "user_profile_is_public_tag" })
+    isPublicTag: boolean;
 
 
     // # Timestamp

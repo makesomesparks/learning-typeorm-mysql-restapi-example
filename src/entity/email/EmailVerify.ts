@@ -3,13 +3,15 @@ import { User } from "../user/User";
 import { UserEmail } from "../user/UserEmail";
 
 @Entity({ name: "tb_email_verify" })
-export class EmailVerify {
+export class EmailVerify
+{
   // PK
   @PrimaryColumn("varchar", { name: "email_verify_uid", length: 15 })
   uid: string;
 
   @BeforeInsert()
-  private async beforeInsert() {
+  private async beforeInsert()
+  {
     const result = await getManager().query("SELECT generate_uid('tb_email_verify') generated_uid");
     this.uid = result[0]["generated_uid"];
   }
@@ -30,16 +32,16 @@ export class EmailVerify {
   @Column('varchar', { name: "email_verify_remote_ipv4", default: '', nullable: false, length: 15 })
   remoteIpv4: string;
 
-  @Column('bit', { name: "email_verify_is_verify", default: () => 0 })
+  @Column('bit', { name: "email_verify_is_verify" })
   isVerify: boolean;
 
-  @Column('bit', { name: "email_verify_is_expire", default: () => 0 })
+  @Column('bit', { name: "email_verify_is_expire" })
   isExpire: boolean;
 
-  @Column('bit', { name: "email_verify_is_send", default: () => 0 })
+  @Column('bit', { name: "email_verify_is_send" })
   isSend: boolean;
 
-  @Column('bit', { name: "email_verify_is_delete", default: () => 0 })
+  @Column('bit', { name: "email_verify_is_delete" })
   isDelete: boolean;
 
 

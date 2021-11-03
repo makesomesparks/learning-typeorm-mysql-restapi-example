@@ -1,8 +1,8 @@
-import { EmailRoute } from "./route/EmailRoute";
+import { UserRoute } from "./route/UserRoute";
 
 export const Routes =
     [
-        ...EmailRoute,
+        ...UserRoute,
     ];
 
     // user
