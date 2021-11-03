@@ -1,6 +1,6 @@
 import { BeforeInsert, CreateDateColumn, Entity, getManager, OneToMany, PrimaryColumn } from "typeorm";
 import { Note } from "../note/Note";
-import { VerifyEmail } from "../verify/VerifyEmail";
+import { EmailVerify } from "../email/EmailVerify";
 import { UserEmail } from "./UserEmail";
 import { UserPassword } from "./UserPassword";
 import { UserProfile } from "./UserProfile";
@@ -39,8 +39,8 @@ export class User {
     @OneToMany(() => UserThirdpartySignin, thirdpartySignin => thirdpartySignin.user)
     thirdpartySignin: UserThirdpartySignin[];
 
-    @OneToMany(() => VerifyEmail, verifyEmail => verifyEmail.user)
-    verifyEmail: VerifyEmail[];
+    @OneToMany(() => EmailVerify, verifyEmail => verifyEmail.user)
+    verifyEmail: EmailVerify[];
 
     @OneToMany(() => UserTag, tag => tag.user)
     tag: UserTag[];

@@ -1,5 +1,5 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
-import { VerifyEmail } from "../verify/VerifyEmail";
+import { EmailVerify } from "../email/EmailVerify";
 import { User } from "./User";
 
 @Entity({ name: "tb_user_email" })
@@ -20,7 +20,7 @@ export class UserEmail {
   @Column('varchar', { name: "user_uid", length: 15, nullable: false })
   userUid: string;
 
-  @Column('varchar', { name: "verify_email_uid", length: 15, nullable: false })
+  @Column('varchar', { name: "email_verify_uid", length: 15, nullable: false })
   verifyEmailUid: string;
 
 
@@ -33,8 +33,6 @@ export class UserEmail {
   @ManyToOne(() => User, user => user.email)
   user: User;
 
-
-  // # Relation 1:1
-  @OneToOne(() => VerifyEmail, verifyEmail => verifyEmail.user)
-  verifyEmail: VerifyEmail;
+  @ManyToOne(() => EmailVerify, emailVerify => emailVerify.user)
+  emailVerify: EmailVerify;
 }

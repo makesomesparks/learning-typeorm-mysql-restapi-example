@@ -21,7 +21,7 @@ export class UserProfile {
 
 
     // # Column
-    @Column('varchar', { name: "user_profile_id", length: 30 })
+    @Column('varchar', { name: "user_profile_id", length: 30, unique: true })
     id: string;
 
     @Column('varchar', { name: "user_profile_name", length: 50 })

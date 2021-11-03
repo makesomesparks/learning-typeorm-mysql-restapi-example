@@ -36,5 +36,5 @@ $ npm start
 # To do
 - Set relationship: user-userEmail-verifyEmail
 - sendmail
-- 3rdparty firebase
+- 3rdparty firebase4 4
 - route....
