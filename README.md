@@ -34,7 +34,7 @@ $ npm start
 - /user/.../note/...
 
 # To do
-- Set relationship: user-userEmail-verifyEmail
-- sendmail
-- 3rdparty firebase4 4
-- route....
+- [x] Set relationship: user-userEmail-verifyEmail
+- [ ] sendmail
+- [ ] 3rdparty firebase4 4
+- [ ] route....
