@@ -1,3 +1,5 @@
+CREATE ALGORITHM=MERGE VIEW `view_note` AS
+
 SELECT
 _NOTE.note_uid,
 _NOTE.user_uid,
