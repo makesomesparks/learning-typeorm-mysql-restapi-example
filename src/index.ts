@@ -1,9 +1,9 @@
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import { Request, Response } from "express";
-import "reflect-metadata";
-import { createConnection } from "typeorm";
-import { Routes } from "./routes";
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import { createConnection } from 'typeorm';
+import { Request, Response } from 'express';
+import { Routes } from './routes';
+import 'reflect-metadata';
 
 createConnection()
   .then(async (connection) =>
