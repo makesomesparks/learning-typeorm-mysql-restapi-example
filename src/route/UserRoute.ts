@@ -35,10 +35,10 @@ export const UserRoute =
       permission: "owner"
     },
     {
-      method: "fetch",
+      method: "patch",
       route: "/user/:id",
       controller: UserController,
-      action: "fetch",
+      action: "patch",
       permission: "owner"
     },
 
@@ -58,10 +58,10 @@ export const UserRoute =
       permission: "owner"
     },
     {
-      method: "fetch",
+      method: "patch",
       route: "/users/profile/:id",
       controller: UserProfileController,
-      action: "fetch",
+      action: "patch",
       permission: "owner"
     },
     {
@@ -88,10 +88,10 @@ export const UserRoute =
       permission: "owner"
     },
     {
-      method: "fetch",
+      method: "patch",
       route: "/users/password/:id",
       controller: UserPasswordController,
-      action: "fetch",
+      action: "patch",
       permission: "owner"
     },
 
