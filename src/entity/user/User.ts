@@ -4,8 +4,8 @@ import { EmailVerify } from "../email/EmailVerify";
 import { UserEmail } from "./UserEmail";
 import { UserPassword } from "./UserPassword";
 import { UserProfile } from "./UserProfile";
-import { UserTag } from "./UserTag";
 import { UserThirdpartySignin } from "./UserThirdpartySignin";
+import { Tag } from "../tag/Tag";
 
 @Entity({ name: "tb_user" })
 export class User {
@@ -42,8 +42,8 @@ export class User {
     @OneToMany(() => EmailVerify, verifyEmail => verifyEmail.user)
     verifyEmail: EmailVerify[];
 
-    @OneToMany(() => UserTag, tag => tag.user)
-    tag: UserTag[];
+    @OneToMany(() => Tag, tag => tag.user)
+    tag: Tag[];
 
     @OneToMany(() => Note, note => note.user)
     note: Note[];
