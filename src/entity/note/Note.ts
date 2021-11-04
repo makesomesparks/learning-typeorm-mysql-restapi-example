@@ -1,4 +1,5 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { TagNote } from "../tag/TagNote";
 import { User } from "../user/User";
 import { NoteCategory } from "./NoteCategory";
 import { NoteDocument } from "./NoteDocument";
@@ -42,6 +43,9 @@ export class Note {
 
   @OneToMany(() => NoteStatus, status => status.note)
   status: NoteStatus[];
+
+  @OneToMany(() => TagNote, tagNote => tagNote.tag)
+  tagNote: TagNote;
 
 
   // # Relation 1:1

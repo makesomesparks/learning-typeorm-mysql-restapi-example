@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryColumn, CreateDateColumn, BeforeInsert, getManager } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn, CreateDateColumn, BeforeInsert, getManager, OneToMany } from "typeorm";
 import { User } from "../user/User";
+import { TagNote } from "./TagNote";
 
 @Entity({ name: "tb_tag" })
 export class Tag
@@ -41,4 +42,8 @@ export class Tag
   // # Relation n:1
   @ManyToOne(() => User, user => user.tag)
   user: User;
+
+  // # Relation 1:n
+  @OneToMany(() => TagNote, tagNote => tagNote.tag)
+  tagNote: TagNote[];
 }
