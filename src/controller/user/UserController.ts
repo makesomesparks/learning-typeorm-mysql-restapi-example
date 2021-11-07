@@ -4,10 +4,9 @@ import { User } from "../../entity/user/User";
 
 export class UserController
 {
-
     userRepository = getRepository(User);
 
-    async all(request: Request, response: Response, next: NextFunction)
+    async list(request: Request, response: Response, next: NextFunction)
     {
         return this.userRepository.createQueryBuilder().where("")
     }
@@ -17,12 +16,18 @@ export class UserController
         return this.userRepository.findOne(request.params.id);
     }
 
-    async save(request: Request, response: Response, next: NextFunction)
+    async put(request: Request, response: Response, next: NextFunction)
     {
         return this.userRepository.save(request.body);
     }
 
-    async remove(request: Request, response: Response, next: NextFunction)
+    async delete(request: Request, response: Response, next: NextFunction)
+    {
+        let userToRemove = await this.userRepository.findOne(request.params.id);
+        await this.userRepository.remove(userToRemove);
+    }
+
+    async patch(request: Request, response: Response, next: NextFunction)
     {
         let userToRemove = await this.userRepository.findOne(request.params.id);
         await this.userRepository.remove(userToRemove);
