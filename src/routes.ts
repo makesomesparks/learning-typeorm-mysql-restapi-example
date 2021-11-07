@@ -1,8 +1,9 @@
+import { AuthRoute } from "./route/AuthRoute";
 import { UserRoute } from "./route/UserRoute";
 
 export const Routes =
     [
-        ...UserRoute,
+        ...AuthRoute, ...UserRoute,
     ];
 
     // user
