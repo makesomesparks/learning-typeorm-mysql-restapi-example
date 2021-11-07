@@ -1,7 +1,6 @@
 import { UserController } from "../controller/user/UserController";
 import { UserPasswordController } from "../controller/user/UserPasswordController";
 import { UserProfileController } from "../controller/user/UserProfileController";
-import { UserTagController } from "../controller/user/UserTagController";
 
 export const UserRoute =
   [
@@ -15,30 +14,30 @@ export const UserRoute =
     },
     {
       method: "get",
-      route: "/user/:id",
+      route: "/users/:id",
       controller: UserController,
       action: "one",
       permission: "owner"
     },
     {
       method: "put",
-      route: "/user",
+      route: "/users",
       controller: UserController,
       action: "put",
       permission: "guest"
     },
     {
-      method: "delete",
-      route: "/user/:id",
+      method: "patch",
+      route: "/users/:id",
       controller: UserController,
-      action: "delete",
+      action: "patch",
       permission: "owner"
     },
     {
-      method: "patch",
-      route: "/user/:id",
+      method: "delete",
+      route: "/users/:id",
       controller: UserController,
-      action: "patch",
+      action: "delete",
       permission: "owner"
     },
 
@@ -94,28 +93,5 @@ export const UserRoute =
       action: "patch",
       permission: "owner"
     },
-
-    // User Tag
-    {
-      method: "get",
-      route: "/users/tags/:id",
-      controller: UserTagController,
-      action: "list",
-      permission: "guest"
-    },
-    {
-      method: "delete",
-      route: "/users/tag/:id",
-      controller: UserTagController,
-      action: "delete",
-      permission: "owner"
-    },
-    {
-      method: "put",
-      route: "/users/tag/:id",
-      controller: UserTagController,
-      action: "put",
-      permission: "owner"
-    }
   ];
 
