@@ -21,6 +21,7 @@
    "dependencies": {
       "autowire": "^2.2.13-1",
       "babel-plugin-root-import": "^6.6.0",
+      "bcrypt": "^5.0.1",
       "body-parser": "^1.18.1",
       "express": "^4.15.4",
       "express-http-context": "^1.2.4",
