@@ -28,7 +28,7 @@ export class Note {
 
 
   // Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "note_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "note_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
   time: Date;
 
 

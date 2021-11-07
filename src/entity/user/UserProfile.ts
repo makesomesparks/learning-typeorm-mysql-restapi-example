@@ -46,7 +46,7 @@ export class UserProfile
 
 
     // # Timestamp
-    @CreateDateColumn({ type: 'timestamp', name: "user_profile_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+    @CreateDateColumn({ type: 'datetime', name: "user_profile_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
     time: string;
 
 

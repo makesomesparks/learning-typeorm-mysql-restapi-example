@@ -25,7 +25,7 @@ export class UserEmail {
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "user_email_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ type: 'datetime', name: "user_email_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
   time: Date;
 
 

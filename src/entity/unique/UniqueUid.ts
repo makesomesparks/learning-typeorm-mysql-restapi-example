@@ -17,7 +17,7 @@ export class UniqueUid {
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp',  name: "unique_uid_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ type: 'datetime',  name: "unique_uid_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
   time: Date;
 
 

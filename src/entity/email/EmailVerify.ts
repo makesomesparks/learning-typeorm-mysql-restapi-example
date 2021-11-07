@@ -46,16 +46,16 @@ export class EmailVerify
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "email_verify_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "email_verify_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
   time: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "email_verify_time_send", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "email_verify_time_send", default: () => "CURRENT_TIMESTAMP(6)" })
   timeSend: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "email_verify_time_verify", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "email_verify_time_verify", default: () => "CURRENT_TIMESTAMP(6)" })
   timeVerify: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "email_verify_time_delete", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "email_verify_time_delete", default: () => "CURRENT_TIMESTAMP(6)" })
   timeDelete: Date;
 
 

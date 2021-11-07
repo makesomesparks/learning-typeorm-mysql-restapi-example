@@ -42,28 +42,28 @@ export class ViewUser
   @Column('bit', { name: "is_email_delete" })
   isEmailDelete: boolean;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time" })
+  @CreateDateColumn({ type: 'datetime', name: "time" })
   time: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_password" })
+  @CreateDateColumn({ type: 'datetime', name: "time_password" })
   timePassword: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_profile" })
+  @CreateDateColumn({ type: 'datetime', name: "time_profile" })
   timeProfile: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_email" })
+  @CreateDateColumn({ type: 'datetime', name: "time_email" })
   timeEmail: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_email_verify" })
+  @CreateDateColumn({ type: 'datetime', name: "time_email_verify" })
   timeEmailVerify: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_email_send" })
+  @CreateDateColumn({ type: 'datetime', name: "time_email_send" })
   timeEmailSend: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_email_verified" })
+  @CreateDateColumn({ type: 'datetime', name: "time_email_verified" })
   timeEmailVerified: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "time_email_delete" })
+  @CreateDateColumn({ type: 'datetime', name: "time_email_delete" })
   timeEmailDelete: Date;
 
 }

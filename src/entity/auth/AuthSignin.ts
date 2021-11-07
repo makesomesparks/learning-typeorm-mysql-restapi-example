@@ -67,13 +67,13 @@ export class AuthSignin
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "auth_signin_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
   time: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_expire", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "auth_signin_time_expire", default: () => "CURRENT_TIMESTAMP(6)" })
   timeExpire: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_maintain", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "auth_signin_time_maintain", default: () => "CURRENT_TIMESTAMP(6)" })
   timeMaintain: Date;
 
   // # Relation n:1

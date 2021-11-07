@@ -35,10 +35,10 @@ export class NoteStatus {
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "note_status_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "note_status_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
   time: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "note_status_time_delete", default: () => "CURRENT_TIMESTAMP(6)" })
+  @CreateDateColumn({ type: 'datetime', name: "note_status_time_delete", default: () => "CURRENT_TIMESTAMP(6)" })
   timeDelete: Date;
 
 

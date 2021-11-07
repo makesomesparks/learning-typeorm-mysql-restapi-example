@@ -26,7 +26,7 @@ export class UserPassword {
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "user_password_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ type: 'datetime', name: "user_password_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
   time: Date;
 
 

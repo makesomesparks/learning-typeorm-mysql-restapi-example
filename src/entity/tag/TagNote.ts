@@ -31,10 +31,10 @@ export class TagNote
 
 
   // # Timestamp
-  @CreateDateColumn({ type: 'timestamp', name: "tag_note_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ type: 'datetime', name: "tag_note_time_create", default: () => 'CURRENT_TIMESTAMP(6)' })
   time: Date;
 
-  @CreateDateColumn({ type: 'timestamp', name: "tag_note_time_delete", default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ type: 'datetime', name: "tag_note_time_delete", default: () => 'CURRENT_TIMESTAMP(6)' })
   timeDelete: Date;
 
 
