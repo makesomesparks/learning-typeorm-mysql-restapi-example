@@ -6,3 +6,4 @@ dist/
 tmp/
 temp/
 ormconfig.js
+jwt-congif.js
