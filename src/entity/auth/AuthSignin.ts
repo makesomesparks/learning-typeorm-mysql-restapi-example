@@ -23,6 +23,9 @@ export class AuthSignin
 
 
   // # Column
+  @Column('varchar', { name: "auth_signin_token", length: 64 })
+  token: string;
+
   @Column('varchar', { name: "auth_signin_try_email", length: 100 })
   email: string;
 
@@ -56,13 +59,22 @@ export class AuthSignin
   @Column('bit', { name: "auth_signin_is_success" })
   isSuccess: boolean;
 
-  @Column('bit', { name: "email_verify_is_delete" })
-  isDelete: boolean;
+  @Column('bit', { name: "auth_signin_is_maintain" })
+  isMaintain: boolean;
+
+  @Column('bit', { name: "email_verify_is_expire" })
+  isExpire: boolean;
 
 
   // # Timestamp
   @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_create", default: () => "CURRENT_TIMESTAMP(6)" })
   time: Date;
+
+  @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_expire", default: () => "CURRENT_TIMESTAMP(6)" })
+  timeExpire: Date;
+
+  @CreateDateColumn({ type: 'timestamp', name: "auth_signin_time_maintain", default: () => "CURRENT_TIMESTAMP(6)" })
+  timeMaintain: Date;
 
   // # Relation n:1
   @ManyToOne(() => User, user => user.verifyEmail)
