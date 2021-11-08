@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { TagNote } from "../../entity/tag/TagNote";
+import { TagNote } from "src/model/entity/tag/TagNote";
 
 export class TagNoteController
 {

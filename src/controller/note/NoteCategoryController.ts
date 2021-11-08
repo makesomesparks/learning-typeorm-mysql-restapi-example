@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { NoteCategory } from "../../entity/note/NoteCategory";
+import { NoteCategory } from "src/model/entity/note/NoteCategory";
 
 export class NoteCategoryController
 {

@@ -1,5 +1,5 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { User } from "../user/User";
+import { User } from "src/model/entity/user/User";
 import { Note } from "./Note";
 import { NoteCategory } from "./NoteCategory";
 import { NoteDocumentStorage } from "./NoteDocumentStorage";

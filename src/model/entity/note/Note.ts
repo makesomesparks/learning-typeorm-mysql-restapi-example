@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { TagNote } from "../tag/TagNote";
-import { User } from "../user/User";
+import { TagNote } from "src/model/entity/tag/TagNote";
+import { User } from "src/model/entity/user/User";
 import { NoteCategory } from "./NoteCategory";
 import { NoteDocument } from "./NoteDocument";
 import { NoteStatus } from "./NoteStatus";

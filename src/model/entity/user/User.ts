@@ -1,11 +1,11 @@
 import { BeforeInsert, CreateDateColumn, Entity, getManager, OneToMany, PrimaryColumn } from "typeorm";
-import { Note } from "../note/Note";
-import { EmailVerify } from "../email/EmailVerify";
+import { Note } from "src/model/entity/note/Note";
+import { EmailVerify } from "src/model/entity/email/EmailVerify";
 import { UserEmail } from "./UserEmail";
 import { UserPassword } from "./UserPassword";
 import { UserProfile } from "./UserProfile";
 import { UserThirdpartySignin } from "./UserThirdpartySignin";
-import { Tag } from "../tag/Tag";
+import { Tag } from "src/model/entity/tag/Tag";
 
 @Entity({ name: "tb_user" })
 export class User {

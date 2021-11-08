@@ -3,8 +3,8 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
-import { Routes } from './routes';
-import { StringUtils } from './util/StringUtils';
+import { Routes } from 'src/routes';
+import { StringUtils } from 'src/util/StringUtils';
 
 createConnection()
   .then(async (connection) =>

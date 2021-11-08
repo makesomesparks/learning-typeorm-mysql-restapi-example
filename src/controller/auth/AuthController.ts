@@ -1,9 +1,8 @@
-import { getRepository, getConnection } from "typeorm";
 import { NextFunction, Request, Response } from "express";
-import { User } from "../../entity/user/User";
-import { ViewUser } from "../../entity/view/ViewUser";
-import { UserUtils } from "../../util/UserUtils";
-import { StringUtils } from "../../util/StringUtils";
+import { User } from "src/model/entity/user/User";
+import { StringUtils } from "src/util/StringUtils";
+import { UserUtils } from "src/util/UserUtils";
+import { getRepository } from "typeorm";
 
 export class AuthController
 {

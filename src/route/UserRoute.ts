@@ -1,6 +1,6 @@
-import { UserController } from "../controller/user/UserController";
-import { UserPasswordController } from "../controller/user/UserPasswordController";
-import { UserProfileController } from "../controller/user/UserProfileController";
+import { UserController } from "src/controller/user/UserController";
+import { UserPasswordController } from "src/controller/user/UserPasswordController";
+import { UserProfileController } from "src/controller/user/UserProfileController";
 
 export const UserRoute =
   [

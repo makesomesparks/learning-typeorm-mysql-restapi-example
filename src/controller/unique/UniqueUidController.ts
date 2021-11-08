@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { UniqueUid } from "../../entity/unique/UniqueUid";
+import { UniqueUid } from "src/model/entity/unique/UniqueUid";
 
 export class UniqueUidController
 {

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { NoteDocumentStorage } from "../../entity/note/NoteDocumentStorage";
+import { NoteDocumentStorage } from "src/model/entity/note/NoteDocumentStorage";
 
 export class NoteDocumentStorageController
 {

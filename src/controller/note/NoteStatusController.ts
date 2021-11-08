@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { NoteStatus } from "../../entity/note/NoteStatus";
+import { NoteStatus } from "src/model/entity/note/NoteStatus";
 
 export class NoteStatusController
 {

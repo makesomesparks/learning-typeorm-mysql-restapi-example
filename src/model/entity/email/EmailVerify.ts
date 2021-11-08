@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import { User } from "../user/User";
-import { UserEmail } from "../user/UserEmail";
+import { User } from "src/model/entity/user/User";
+import { UserEmail } from "src/model/entity/user/UserEmail";
 
 @Entity({ name: "tb_email_verify" })
 export class EmailVerify

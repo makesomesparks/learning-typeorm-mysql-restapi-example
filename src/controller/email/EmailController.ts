@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { AuthSignin } from "../../entity/auth/AuthSignin";
+import { AuthSignin } from "src/model/entity/auth/AuthSignin";
 
 export class AuthController
 {

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { UserThirdpartySignin } from "../../entity/user/UserThirdpartySignin";
+import { UserThirdpartySignin } from "src/model/entity/user/UserThirdpartySignin";
 
 export class UserThirdpartySigninController
 {

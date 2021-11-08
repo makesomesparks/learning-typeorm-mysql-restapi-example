@@ -1,5 +1,5 @@
 import { Connection, EntitySubscriberInterface, EventSubscriber, InsertEvent, UpdateEvent, RemoveEvent, TransactionStartEvent, TransactionCommitEvent, TransactionRollbackEvent } from 'typeorm/index';
-import { UniqueUid } from "../../entity/unique/UniqueUid";
+import { UniqueUid } from "src/model/entity/unique/UniqueUid";
 
 
 @EventSubscriber()

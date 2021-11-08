@@ -1,4 +1,4 @@
-import { AuthController } from "../controller/auth/AuthController";
+import { AuthController } from "src/controller/auth/AuthController";
 
 export const AuthRoute =
   [

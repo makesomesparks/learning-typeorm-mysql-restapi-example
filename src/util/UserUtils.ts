@@ -1,5 +1,5 @@
 import { getConnection, getRepository } from "typeorm";
-import { ViewUser } from "../entity/view/ViewUser";
+import { ViewUser } from "src/model/entity/view/ViewUser";
 
 export const UserUtils =
 {

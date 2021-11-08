@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { UserPassword } from "../../entity/user/UserPassword";
+import { UserPassword } from "src/model/entity/user/UserPassword";
 
 export class UserPasswordController
 {

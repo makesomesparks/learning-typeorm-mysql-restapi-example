@@ -1,5 +1,5 @@
 import { BeforeInsert, Column, CreateDateColumn, Entity, getManager, ManyToOne, OneToMany, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
-import { EmailVerify } from "../email/EmailVerify";
+import { EmailVerify } from "src/model/entity/email/EmailVerify";
 import { User } from "./User";
 
 @Entity({ name: "tb_user_email" })

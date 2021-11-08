@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryColumn, CreateDateColumn, BeforeInsert, getManager } from "typeorm";
-import { Note } from "../note/Note";
+import { Note } from "src/model/entity/note/Note";
 import { Tag } from "./Tag";
 
 @Entity({ name: "tb_tag_note" })
