@@ -4,6 +4,7 @@ import { StringUtils } from "src/util/StringUtils";
 import { UserUtils } from "src/util/UserUtils";
 import { getRepository } from "typeorm";
 
+
 export class AuthController
 {
     userRepository = getRepository(User);
