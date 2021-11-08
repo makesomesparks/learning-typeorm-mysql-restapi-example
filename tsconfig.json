@@ -2,14 +2,25 @@
    "compilerOptions": {
       "lib": [
          "es5",
-         "es6"
+         "es6",
+         "dom"
       ],
       "target": "es5",
       "module": "CommonJS",
       "moduleResolution": "Node",
       "outDir": "./build",
       "emitDecoratorMetadata": true,
+      "allowJs": true,
       "experimentalDecorators": true,
-      "sourceMap": true
-   }
+      "sourceMap": true,
+      "baseUrl": ".",
+      "paths": {
+         "src/*": [
+            "src/*"
+         ]
+      }
+   },
+   "exclude": [
+      "node_modules"
+   ]
 }
