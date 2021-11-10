@@ -30,7 +30,7 @@ export class ViewUser
   @Column('varchar', { name: "password", length: 255 })
   password: string;
 
-  @Column('bit', { name: "email_verify_is_verify" })
+  @Column('bit', { name: "is_email_verify" })
   isEmailVerify: boolean;
 
   @Column('bit', { name: "is_email_expire" })
