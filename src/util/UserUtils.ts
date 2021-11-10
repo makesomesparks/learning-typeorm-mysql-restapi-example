@@ -1,16 +1,16 @@
-import { getConnection, getRepository } from "typeorm";
 import { ViewUser } from "src/model/entity/view/ViewUser";
+import { createConnection, getRepository } from "typeorm";
 
 export const UserUtils =
 {
   checkExistUserEmail: async (email: string): Promise<"exist-verified" | "exist-not-verified" | "empty"> =>
   {
-    let userRepository = getRepository(ViewUser);
-    let viewUser: ViewUser = await userRepository.createQueryBuilder().where("email = :id", { "email": email }).getOne();
+
+    let viewUser: ViewUser = await getRepository(ViewUser).createQueryBuilder().where("email = :email", { "email": email }).getOne();
 
     if (typeof viewUser === 'undefined')
     {
-      return "empty";
+      return 'empty';
     }
     else
     {
