@@ -22,6 +22,11 @@ $ npm i
 $ npm start
 ```
 
+# Test
+```
+$ npm test
+```
+
 # Entity
 - Alias
 - Snake naming strategy
