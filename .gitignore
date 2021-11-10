@@ -7,3 +7,4 @@ tmp/
 temp/
 ormconfig.js
 jwt-config.js
+yarn-error.log
