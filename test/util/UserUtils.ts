@@ -1,5 +1,4 @@
 import { expect } from "chai";
-import connection from "src/util/Connection";
 import { UserUtils } from "src/util/UserUtils";
 import { createConnection } from "typeorm";
 
