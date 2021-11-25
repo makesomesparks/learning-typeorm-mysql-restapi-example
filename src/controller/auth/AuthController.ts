@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "src/model/entity/user/User";
-import { StringUtils } from "src/util/StringUtils";
-import { UserUtils } from "src/util/UserUtils";
-import { getRepository } from "typeorm";
 
+import { StringUtils } from "src/utils/StringUtils";
+import { User } from "src/model/entity/user/User";
+import { UserRepository } from "src/repository/user/UserRepository";
+import { ViewUser } from "src/model/entity/view/ViewUser";
+import { getRepository } from "typeorm";
 
 export class AuthController
 {
@@ -15,12 +16,7 @@ export class AuthController
 
         StringUtils.regex.isValidEmail(email);
 
-        const checkEmailExist = await UserUtils.checkExistUserEmail(email);
-
-        if (checkEmailExist == 'exist-verified')
-        {
-
-        }
+        const user: ViewUser = await UserRepository.getUserEmail(email);
 
         return this.userRepository.createQueryBuilder().where("")
     }
